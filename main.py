@@ -12,14 +12,14 @@ def main():
 
     args = parser.parse_args()
 
-    if args.report not in REPORT_MAPPING:
-        print(f"Отчёт {args.report} не найден. Вам доступны - {list(REPORT_MAPPING)}")
+    try:
+        report_func = REPORT_MAPPING[args.report]
+        data = report_func(args.files)
 
-    report_func = REPORT_MAPPING[args.report]
-    data = report_func(args.files)
-
-    headers = ["Студете", "Медиана трат на кофе"]
-    print(tabulate(data, headers=headers, tablefmt="grid"))
+        headers = ["Студете", "Медиана трат на кофе"]
+        print(tabulate(data, headers=headers, tablefmt="grid"))
+    except Exception as e:
+        print(f"Ошибка отчёта: {e}")
 
 
 if __name__ == "__main__":
