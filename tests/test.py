@@ -1,6 +1,6 @@
 import pytest
+
 from reports import calculate_median_coffee
-import os
 
 
 @pytest.fixture
@@ -17,6 +17,7 @@ def sample_csv_path(tmp_path):
 
     file.write_text(csv_content, encoding='utf-8')
     return str(file)
+
 
 def test_median(sample_csv_path):
     result = calculate_median_coffee([sample_csv_path])

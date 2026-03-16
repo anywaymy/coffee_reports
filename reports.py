@@ -1,6 +1,6 @@
 import csv
-from statistics import median
 from collections import defaultdict
+from statistics import median
 
 
 def calculate_median_coffee(files):

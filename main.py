@@ -1,6 +1,9 @@
 import argparse
+
 from tabulate import tabulate
+
 from reports import REPORT_MAPPING
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -10,7 +13,7 @@ def main():
     args = parser.parse_args()
 
     if args.report not in REPORT_MAPPING:
-        print(f"Отчёт {args.report} не найден. Вам доступные - {list(REPORT_MAPPING)}")
+        print(f"Отчёт {args.report} не найден. Вам доступны - {list(REPORT_MAPPING)}")
 
     report_func = REPORT_MAPPING[args.report]
     data = report_func(args.files)
